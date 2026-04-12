@@ -12,21 +12,25 @@ public class Main {
         String RESET = "\u001B[0m";
         Random random = new Random();
 
-        int dragon1HP = 100;
-        int dragon1Damage = 20;
-        int dragon2HP = 100;
-        int dragon2Damage = 20;
-        int dragon3HP = 100;
-        int dragon3Damage = 20;
+        Dragon[] dragons = new Dragon[3];
+        dragons[0] = new Dragon(1000, 200);
+        dragons[1] = new Dragon(1000, 200);
+        dragons[2] = new Dragon(3000, 300);
+
+
+        //int[] dragonHPs = { 100, 100, 100 };
+        //int[] dragonDamage = { 20, 20, 20 };
+
 
         System.out.println(
                 " **********************  \n" +
-                " **The final battle!!** \n" +
-                " ********************** ");
+                        " **The final battle!!** \n" +
+                        " ********************** ");
 
         System.out.println();
 
 
+        //<editor-fold desc="ascii">
         String splashScreen = RED +
                 "                                        ,   ,\n" +
                 "                                        $,  $,     ,\n" +
@@ -73,164 +77,8 @@ public class Main {
                 "            `\"\"\"\"\"\"\"\"\"\"\"\"\"'         '           '           '" +
                 RESET;
 
-        String dragonArt123 =
-                        "         <>=======()                                                       \n" +
-                        "        (/\\___   /|\\\\           ()==========<>_    \n" +
-                        "               \\_/ | \\\\        //|\\   ______/ \\)                            \n" +
-                        "                 \\_|  \\\\      // | \\_/                                      \n" +
-                        "                  \\|\\/|\\_    //  /\\/                                        \n" +
-                        "                        (oo)\\ \\_///       [" + RED + dragon2HP + " HP" + RESET + "] \n" +
-                        "                        //_/\\_\\/ /|                                      \n" +
-                        "                      @@/  |=\\  \\ |                                       \n" +
-                        "                             \\_=\\_\\|                                     \n" +
-                        "        __        _           \\==\\ |\\_                   \\||/               \n" +
-                        "      _/  \\    _(\\(o __       (\\===\\(  )\\                |  @___oo          \n" +
-                        "      /     \\  /  _  ^^^o    (((~) __(_/       /\\  /\\   / (__,,,,|         \n" +
-                        "     /   !   \\/  ! '!!!v'   (((~) \\  /        ) /^\\) ^\\/ _)                \n" +
-                        "    !  !  \\ _' ( \\____      ______/ /         )   _ /  / _)                \n" +
-                        "    ! . \\ _!\\   \\===^\\)      '------'    /\\  ) /\\/ ||  | )_)                \n" +
-                        "     \\ \\_!  / __!                       <  >      |(,,) )__)               \n" +
-                        "      \\!   /    \\                        ||      /    \\)___)\\              \n" +
-                        "(\\_      _/    _\\ )                      | \\____(      )___) )___          \n" +
-                        " \\ ^^--^^ __-^ /(__                      \\______(_______;;; __;;;          \n" +
-                        "  ^^----^^    \"^--v'                                                       \n" +
-                        "                                                                           \n" +
-                        "     [" + RED + dragon1HP + " HP" + RESET + "]                                         [" + RED + dragon3HP + " HP" + RESET + "]        \n";
-
-        String dragonArt23 =
-                        "         <>=======()                                                       \n" +
-                        "        (/\\___   /|\\\\           ()==========<>_    \n" +
-                        "               \\_/ | \\\\        //|\\   ______/ \\)                            \n" +
-                        "                 \\_|  \\\\      // | \\_/                                      \n" +
-                        "                  \\|\\/|\\_    //  /\\/                                        \n" +
-                        "                        (oo)\\ \\_///        \n" +
-                        "                        //_/\\_\\/ /|                                      \n" +
-                        "                      @@/  |=\\  \\ |                                       \n" +
-                        "                             \\_=\\_\\|                                     \n" +
-                        "                              \\==\\ |\\_                      \\||/               \n" +
-                        "                            (\\====\\( )\\                     |  @___oo          \n" +
-                        "                           (((~) __(_/                /\\  /\\/ (__,,,,|         \n" +
-                        "                           (((~) \\  /              ) /^\\) ^\\/ _)                \n" +
-                        "                           ______/ /               )   _ /  / _)                \n" +
-                        "                           '------'            /\\  ) /\\/ || | )_)                \n" +
-                        "                [" + RED + dragon2HP + " HP" + RESET + "]                      <  >      |(,,) )__)               \n" +
-                        "                                               ||      /    \\)___)\\              \n" +
-                        "                                               | \\____(      )___) )___          \n" +
-                        "                                               \\______(_______;;; __;;;          \n" +
-                        "                                                                             \n" +
-                        "                                                         [" + RED + dragon3HP + " HP" + RESET + "]                  \n" +
-                        "                                                                              \n";
-
-
-        String dragonArt13 =
-                        "                                                                             \n" +
-                        "                                                                          \n" +
-                        "                                                                           \n" +
-                        "                                                                            \n" +
-                        "                                                                            \n" +
-                        "                                                                             \n" +
-                        "                                                                              \n" +
-                        "                                                                             \n" +
-                        "                                                                                \n" +
-                        "        __        _                                     \\||/               \n" +
-                        "      _/  \\    _(\\(o __                                 |  @___oo          \n" +
-                        "      /     \\  /  _  ^^^o                     /\\  /\\   / (__,,,,|         \n" +
-                        "     /   !   \\/  ! '!!!v'                    )/^\\) ^\\ / _)                \n" +
-                        "    !  !  \\ _' ( \\____                       )   _ /  / _)                \n" +
-                        "    ! . \\ _!\\   \\===^\\)                  /\\  ) /\\/ || | )_)                \n" +
-                        "     \\ \\_!  / __!                       <  >      |(,,) )__)               \n" +
-                        "      \\!   /    \\                        ||      /    \\)___)\\              \n" +
-                        "(\\_      _/    _\\ )                      | \\____(      )___) )___          \n" +
-                        " \\ ^^--^^ __-^ /(__                      \\______(_______;;; __;;;          \n" +
-                        "  ^^----^^    \"^--v'                                                       \n" +
-                        "                                                                           \n" +
-                        "     [" + RED + dragon1HP + " HP" + RESET + "]                                         [" + RED + dragon3HP + " HP" + RESET + "]        \n";
-
-
-
-        String dragonArt12 =
-                        "                   <>=======()                                                                   \n" +
-                        "                  (/\\___   /|\\\\           ()==========<>_                           \n" +
-                        "                         \\_/ | \\\\        //|\\   ______/ \\)                            \n" +
-                        "                           \\_|  \\\\      // | \\_/                                      \n" +
-                        "                            \\|\\/|\\_    //  /\\/                                        \n" +
-                        "                                  (oo)\\ \\_///       [" + RED + dragon2HP + " HP" + RESET + "] \n" +
-                        "                                  //_/\\_\\/ /|                                      \n" +
-                        "                                @@/  |=\\  \\ |                                       \n" +
-                        "                                      \\_=\\_\\|                                     \n" +
-                        "        __        _                    \\==\\ |\\_                                  \n" +
-                        "      _/  \\    _(\\(o __             _(\\==\\(  )\\                             \n" +
-                        "      /     \\  /  _  ^^^o           (((~) __(_/                                    \n" +
-                        "     /   !   \\/  ! '!!!v'           (((~) \\  /                                   \n" +
-                        "    !  !  \\ _' ( \\____              ______/ /                                         \n" +
-                        "    ! . \\ _!\\   \\===^\\)             '------'                                 \n" +
-                        "     \\ \\_!  / __!                                                     \n" +
-                        "      \\!   /    \\                                                      \n" +
-                        "(\\_      _/    _\\ )                                                        \n" +
-                        " \\ ^^--^^ __-^ /(__                                                   \n" +
-                        "  ^^----^^    \"^--v'                                                       \n" +
-                        "                                                                           \n" +
-                        "     [" + RED + dragon1HP + " HP" + RESET + "]                                                  \n";
-
-
-        String dragonArt1 =
-                        "                                                                     \n" +
-                        "                                                                         \n" +
-                        "        __        _                                                   \n" +
-                        "      _/  \\    _(\\(o __                                           \n" +
-                        "      /     \\  /  _  ^^^o                                               \n" +
-                        "     /   !   \\/  ! '!!!v'                                                \n" +
-                        "    !  !  \\ _' ( \\____                                                         \n" +
-                        "    ! . \\ _!\\   \\===^\\)                                              \n" +
-                        "     \\ \\_!  / __!                                                     \n" +
-                        "      \\!   /    \\                                                      \n" +
-                        "(\\_      _/    _\\ )                                                        \n" +
-                        " \\ ^^--^^ __-^ /(__                                                   \n" +
-                        "  ^^----^^    \"^--v'                                                       \n" +
-                        "                                                                           \n" +
-                        "     [" + RED + dragon1HP + " HP" + RESET + "]                                                  \n";
-
-
-        String dragonArt2 =
-                        "         <>=======()                                                       \n" +
-                        "        (/\\___   /|\\\\           ()==========<>_    \n" +
-                        "               \\_/ | \\\\        //|\\   ______/ \\)                            \n" +
-                        "                 \\_|  \\\\      // | \\_/                                      \n" +
-                        "                  \\|\\/|\\_    //  /\\/                                        \n" +
-                        "                        (oo)\\ \\_///       [" + RED + dragon2HP + " HP" + RESET + "] \n" +
-                        "                        //_/\\_\\/ /|                                      \n" +
-                        "                      @@/  |=\\  \\ |                                       \n" +
-                        "                             \\_=\\_\\|                                     \n" +
-                        "                             \\==\\ |\\_                                \n" +
-                        "                          (\\===\\(  )\\                         \n" +
-                        "                          (((~) __(_/                \n" +
-                        "                          (((~) \\  /                        \n" +
-                        "                          ______/ /                        \n" +
-                        "                          '------'                   \n" +
-                        "                                                           \n" +
-                        "                                                           \n" +
-                        "                                                    \n" +
-                        "                                                   \n" +
-                        "                                                                             \n" +
-                        "                                                                           \n" +
-                        "                                                                              \n";
-
-
-        String dragonArt3 =
-                        "                                                            \\||/           \n" +
-                        "                                                            |  @___oo      \n" +
-                        "                                                  /\\  /\\   / (__,,,,|      \n" +
-                        "                                                 ) /^\\) ^\\/ _)             \n" +
-                        "                                                 )   /^\\/   _)             \n" +
-                        "                                                 )   _ /  / _)             \n" +
-                        "                                             /\\  )/\\/ ||  | )_)            \n" +
-                        "                                            <  >      |(,,) )__)           \n" +
-                        "                                             ||      /    \\)___)\\          \n" +
-                        "                                             | \\____(      )___) )___      \n" +
-                        "                                              \\______(_______;;; __;;;     \n" +
-                        "                                              [" + RED + dragon2HP + " HP" + RESET + "] \n";
-        String win  =
-                        "                                                   (\\\"\\\n" +
+        String win =
+                "                                                   (\\\"\\\n" +
                         "           /)                                       ) \\\n" +
                         "          (^)                                      /   \\\n" +
                         "          ,i.                                     (  ^  )\n" +
@@ -243,7 +91,7 @@ public class Main {
                         "      ))(/) (\\((|)    \".___________.\"       | (((|)_v_/((() |\n" +
                         "     ((((\\___/))(\\       \\y ,--.y/          |  )))))  ()))) |\n" +
                         "    / ,-)     (-. \\      /,---. )\\          |/  ,   |   .  \\|\n" +
-                        "   ( ( ( _, ._ ) ) )    / (((\\\\)\\ \\         /  (* ^   *)  \\\n" +
+                        "   ( ( ( _, ._  ) )    / (((\\\\)\\ \\         /  (* ^   *)  \\\n" +
                         "    \\ \\ )     ( / /     \\ \\\\-_/ / /        /  /|`--\" `--\"|\\  \\\n" +
                         "     ) y       y (       \\ i   i /        / .\" ,--. . ,--. \". \\\n" +
                         "     \\(         )/        (_)=(_)      __/ /'-/(   \\ /   )\\-'\\ \\__\n" +
@@ -257,45 +105,46 @@ public class Main {
                         "        _,T-)  /    / ^!           !^ \\\n" +
                         "       (__,-%_/@";
 
-        String lose =   "                                           .\"\"--.._\n" +
-                        "                                           []      `'--.._\n" +
-                        "                                           ||__           `'-,\n" +
-                        "                                         `)||_ ```'--..       \\\n" +
-                        "                     _                    /|//}        ``--._  |\n" +
-                        "                  .'` `'.                /////}              `\\/\n" +
-                        "                 /  .\"\"\".\\              //{///\n" +
-                        "                /  /_  _`\\\\            // `||\n" +
-                        "                | |(_)(_)||          _//   ||\n" +
-                        "                | |  /\\  )|        _///\\   ||\n" +
-                        "                | |L====J |       / |/ |   ||\n" +
-                        "               /  /'-..-' /    .'`  \\  |   ||\n" +
-                        "              /   |  :: | |_.-`      |  \\  ||\n" +
-                        "             /|   `\\-::.| |          \\   | ||\n" +
-                        "           /` `|   /    | |          |   / ||\n" +
-                        "         |`    \\   |    / /          \\  |  ||\n" +
-                        "        |       `\\_|    |/      ,.__. \\ |  ||\n" +
-                        "        /                     /`    `\\ ||  ||\n" +
-                        "       |           .         /        \\||  ||\n" +
-                        "       |                     |         |/  ||\n" +
-                        "       /         /           |         (   ||\n" +
-                        "      /          .           /          )  ||\n" +
-                        "     |            \\          |             ||\n" +
-                        "    /             |          /             ||\n" +
-                        "   |\\            /          |              ||\n" +
-                        "   \\ `-._       |           /              ||\n" +
-                        "    \\ ,//`\\    /`           |              ||\n" +
-                        "     ///\\  \\  |             \\              ||\n" +
-                        "    |||| ) |__/             |              ||\n" +
-                        "    |||| `.(                |              ||\n" +
-                        "    `\\\\` /`                 /              ||\n" +
-                        "       /`                   /              ||\n" +
-                        " jgs  /                     |              ||\n" +
-                        "     |                      \\              ||\n" +
-                        "    /                        |             ||\n" +
-                        "  /`                          \\            ||\n" +
-                        "/`                            |            ||\n" +
-                        "`-.___,-.      .-.        ___,'            ||\n+" +
-                        "         `---'`   `'----'`";
+        String lose = "                                           .\"\"--.._\n" +
+                "                                           []      `'--.._\n" +
+                "                                           ||__           `'-,\n" +
+                "                                         `)||_ ```'--..       \\\n" +
+                "                     _                    /|//}        ``--._  |\n" +
+                "                  .'` `'.                /////}              `\\/\n" +
+                "                 /  .\"\"\".\\              //{///\n" +
+                "                /  /_  _`\\\\            // `||\n" +
+                "                | |(_)(_)||          _//   ||\n" +
+                "                | |  /\\  )|        _///\\   ||\n" +
+                "                | |L====J |       / |/ |   ||\n" +
+                "               /  /'-..-' /    .'`  \\  |   ||\n" +
+                "              /   |  :: | |_.-`      |  \\  ||\n" +
+                "             /|   `\\-::.| |          \\   | ||\n" +
+                "           /` `|   /    | |          |   / ||\n" +
+                "         |`    \\   |    / /          \\  |  ||\n" +
+                "        |       `\\_|    |/      ,.__. \\ |  ||\n" +
+                "        /                     /`    `\\ ||  ||\n" +
+                "       |           .         /        \\||  ||\n" +
+                "       |                     |         |/  ||\n" +
+                "       /         /           |         (   ||\n" +
+                "      /          .           /          )  ||\n" +
+                "     |            \\          |             ||\n" +
+                "    /             |          /             ||\n" +
+                "   |\\            /          |              ||\n" +
+                "   \\ `-._       |           /              ||\n" +
+                "    \\ ,//`\\    /`           |              ||\n" +
+                "     ///\\  \\  |             \\              ||\n" +
+                "    |||| ) |__/             |              ||\n" +
+                "    |||| `.(                |              ||\n" +
+                "    `\\\\` /`                 /              ||\n" +
+                "       /`                   /              ||\n" +
+                " jgs  /                     |              ||\n" +
+                "     |                      \\              ||\n" +
+                "    /                        |             ||\n" +
+                "  /`                          \\            ||\n" +
+                "/`                            |            ||\n" +
+                "`-.___,-.      .-.        ___,'            ||\n+" +
+                "         `---'`   `'----'`";
+        //</editor-fold>
         System.out.println(splashScreen);
         System.out.println();
 
@@ -308,141 +157,301 @@ public class Main {
 
 
         System.out.println("Hero has " + heroHP + " HP and deals up to " + heroDamage + " points of damage");
-        System.out.println("Dragon 1 has " + YELLOW + dragon1HP + " HP and deals up to " + dragon1Damage + " points of damage" + RESET);
-        System.out.println("Dragon 2 has " + YELLOW + dragon2HP + " HP and deals up to " + dragon2Damage + " points of damage" + RESET);
-        System.out.println("Dragon 3 has " + YELLOW + dragon3HP + " HP and deals up to " + dragon3Damage + " points of damage" + RESET);
+
 
         //do battle until one side dies
         boolean heroWins = false;
-        while (true) {
+        boolean battleOver = false;
+        while (!battleOver) {
 
+
+
+            printDragonStatus(YELLOW, CYAN, RED, GREEN, RESET, dragons);
             System.out.println("Hero has " + GREEN + heroHP + " HP" + RESET);
             System.out.println("-----------------------------------------");
-            System.out.println("Dragons Status");
-            System.out.println("---------------");
-            System.out.println("Dragon 1 has " + YELLOW + dragon1HP + " HP" + RESET);
-            System.out.println("Dragon 2 has " + YELLOW + dragon2HP + " HP" + RESET);
-            System.out.println("Dragon 3 has " + YELLOW + dragon3HP + " HP" + RESET);
-            System.out.println();
+/*
+            //<editor-fold desc="Battle Logic">
+            for (int i = 0; i < dragons.length; i++) {
+                System.out.println("Dragon " + (i + 1) + " has " + YELLOW + dragons[i].getHitPoints() + " HP" + RESET);
+                System.out.println();
+                //</editor-fold>
 
-            if (heroHP < 1) {
-                heroWins = false;
-                break;
-            }
-            if (dragon1HP < 1 && dragon2HP < 1 && dragon3HP < 1) {
-                heroWins = true;
-                break;
-            }
+                if (heroHP < 1) {
+                    battleOver = true;
+                    heroWins = false;
+                    break;
+                }
+                if (dragons[0].getHitPoints() < 1 && dragons[1].getHitPoints() < 1 && dragons[2].getHitPoints() < 1) {
+                    battleOver = true;
+                    heroWins = true;
+                    break;
+                }
+*/
+                int dragonChoice = 0;
+                while (dragonChoice < 1 || dragonChoice > 3) {
 
-            int dragonChoice = 0;
-            while (dragonChoice < 1 || dragonChoice > 3) {
+                    //art and question print logic
+                    printCurrentBattleScene(dragons, RED, RESET);
+                    System.out.println("Which dragon would you like to attack above?");
+                    dragonChoice = scanner.nextInt();
+                    int dragonDmg = 0;
+                    System.out.println("Attacking Dragon " + dragonChoice + ".");
 
-                //art and question print logic
-                if (dragon1HP > 0 && dragon2HP > 0 && dragon3HP > 0) {
-                    System.out.println(dragonArt123);
-                    System.out.println("Hero's turn to attack. Which dragon would you like to attack (1, 2, 3)?");
-                }
-                else if (dragon1HP > 0 && dragon2HP > 0) {
-                    System.out.println(dragonArt12);
-                    System.out.println("Hero's turn to attack. Which dragon would you like to attack (1 or 2)?");
-                }
-                else if (dragon1HP > 0 && dragon3HP > 0) {
-                    System.out.println(dragonArt13);
-                    System.out.println("Hero's turn to attack. Which dragon would you like to attack (1 or 3)?");
-                }
-                else if (dragon2HP > 0 && dragon3HP > 0) {
-                    System.out.println(dragonArt23);
-                    System.out.println("Hero's turn to attack. Which dragon would you like to attack (2 or 3)?");
-                }
-                else if (dragon1HP > 0) {
-                    System.out.println(dragonArt1);
-                    System.out.println("Hero's turn to attack. Which dragon would you like to attack (1)?");
-                }
-                else if (dragon2HP > 0) {
-                    System.out.println(dragonArt2);
-                    System.out.println("Hero's turn to attack. Which dragon would you like to attack (2)?");
-                }
-                else if (dragon3HP > 0) {
-                    System.out.println(dragonArt3);
-                    System.out.println("Hero's turn to attack. Which dragon would you like to attack (3)?");
-                }
 
-                dragonChoice = scanner.nextInt();
+                    //</editor-fold>
+                    if (dragonChoice >= 1 && dragonChoice <= dragons.length) {
+                        int choice = dragonChoice - 1;
 
-                System.out.println("Attacking Dragon " + dragonChoice + ".");
-
-                if (dragonChoice == 1) {
-                    if (dragon1HP < 1) {
-                        System.out.println("Dragon 1 is already dead!");
-                        dragonChoice = 0;
+                        if (dragons[choice].getHitPoints() < 1) {
+                            System.out.println("Dragon " + dragonChoice + " is already dead!");
+                            try {
+                                sleep(1200);
+                            } catch (InterruptedException e) {
+                                throw new RuntimeException(e);
+                            }
+                            dragonChoice = 0; // Triggers the 'while' loop to ask again
+                            continue;
+                        } else {
+                            int heroHitsForDmg = random.nextInt(heroDamage);
+                            dragons[choice].setHitPoints(dragons[choice].getHitPoints() - heroHitsForDmg);
+                            System.out.println("You hit Dragon " + dragonChoice + " for " + CYAN + heroHitsForDmg + " dmg." + RESET);
+                        }
                     } else {
-                        int heroHitsForDmg = random.nextInt(heroDamage);
-                        dragon1HP = dragon1HP - heroHitsForDmg;
-                        System.out.println("You hit Dragon 1 for " + CYAN + heroHitsForDmg + " dmg." + RESET);
+                        System.out.println("That's not a valid dragon number!");
+                        try {
+                            sleep(1200);
+                        } catch (InterruptedException e) {
+                            throw new RuntimeException(e);
+                        }
+                        dragonChoice = 0;
+                        continue;
+                    }
+                    if (dragons[0].getHitPoints() < 1 && dragons[1].getHitPoints() < 1 && dragons[2].getHitPoints() < 1) {
+                        battleOver = true;
+                        heroWins = true;
+                        break;
                     }
 
-                } else if (dragonChoice == 2) {
-                    if (dragon2HP < 1) {
-                        System.out.println("Dragon 2 is already dead!");
-                        dragonChoice = 0;
-                    } else {
-                        int heroHitsForDmg = random.nextInt(heroDamage);
-                        dragon2HP = dragon2HP - heroHitsForDmg;
-                        System.out.println("You hit Dragon 2 for " + CYAN + heroHitsForDmg + " dmg." + RESET);
-                    }
-                } else if (dragonChoice == 3) {
-                    if (dragon3HP < 1) {
-                        System.out.println("Dragon 3 is already dead!");
-                        dragonChoice = 0;
-                    } else {
-                        int heroHitsForDmg = random.nextInt(heroDamage);
-                        dragon3HP = dragon3HP - heroHitsForDmg;
-                        System.out.println("You hit Dragon 3 for " + CYAN + heroHitsForDmg + " dmg." + RESET);
+                    try {
+                        Thread.sleep(1200);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
                     }
 
+                    //dragons attack
+                    for (int d = 0; d < dragons.length; d++) {
+                        if (dragons[d].getHitPoints() > 0) {
+                            dragonDmg = random.nextInt(dragons[d].getDamage());
+                            heroHP = heroHP - dragonDmg;
+                            System.out.println("Dragon " + (d + 1) + " hits you for " + RED + dragonDmg + " Dmg." + RESET);
+                        }
+                    }
+                    try {
+                        sleep(1200);
+                    } catch (InterruptedException e) {
+                        throw new RuntimeException(e);
+                    }
+                    if (heroHP < 1) {
+                        battleOver = true;
+                        heroWins = false;
+                        break;
+                    }
                 }
-
-                try {
-                    sleep(1200);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-
-                if(dragon1HP > 0) {
-                    int dragon1HitsForDmg = random.nextInt(dragon1Damage);
-                    heroHP = heroHP - dragon1HitsForDmg;
-                    System.out.println("Dragon 1 hits you for " + RED + dragon1HitsForDmg + " Dmg." + RESET);
-                }
-                if(dragon2HP > 0) {
-                    int dragon2HitsForDmg = random.nextInt(dragon2Damage);
-                    heroHP = heroHP - dragon2HitsForDmg;
-                    System.out.println("Dragon 2 hits you for " + RED + dragon2HitsForDmg + " Dmg." + RESET);
-                }
-                if(dragon3HP > 0) {
-                    int dragon3HitsForDmg = random.nextInt(dragon3Damage);
-                    heroHP = heroHP - dragon3HitsForDmg;
-                    System.out.println("Dragon 3 hits you for " + RED + dragon3HitsForDmg + " Dmg." + RESET);
-                }
-
-                try {
-                    sleep(1200);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-
-
         }
 
-            System.out.println("Battle Outcome");
-            System.out.println("--------------");
-            if (heroWins == false) {
-                System.out.println(RED + "You Were Defeated!" + RESET);
-                System.out.println(RED + lose + RESET);
-            } else {
-                System.out.println(GREEN + "You are a hero!!" + RESET);
-                System.out.println(CYAN + win + RESET);
-            }
-    }
+        System.out.println("Battle Outcome");
+        System.out.println("--------------");
+        if (heroWins == false) {
+            System.out.println(RED + "You Were Defeated!" + RESET);
+            System.out.println(RED + lose + RESET);
+        } else {
+            System.out.println(GREEN + "You are a hero!!" + RESET);
+            System.out.println(CYAN + win + RESET);
+        }
 
+
+
+    }
+    private static void printCurrentBattleScene(Dragon[] dragons, String RED, String RESET) {
+        boolean d1 = dragons[0].getHitPoints() > 0;
+        boolean d2 = dragons[1].getHitPoints() > 0;
+        boolean d3 = dragons[2].getHitPoints() > 0;
+
+        if (d1 && d2 && d3) {
+            System.out.println(getArt123(dragons, RED, RESET));
+        } else if (d1 && d2) {
+            System.out.println(getArt12(dragons, RED, RESET));
+        } else if (d1 && d3) {
+            System.out.println(getArt13(dragons, RED, RESET));
+        } else if (d2 && d3) {
+            System.out.println(getArt23(dragons, RED, RESET));
+        } else if (d1) {
+            System.out.println(getArt1(dragons, RED, RESET));
+        } else if (d2) {
+            System.out.println(getArt2(dragons, RED, RESET));
+        } else if (d3) {
+            System.out.println(getArt3(dragons, RED, RESET));
+        }
+    }
+    private static String getArt123(Dragon[] dragons, String RED, String RESET) {
+        return  "         <>=======()                                                       \n" +
+                "        (/\\___   /|\\\\           ()==========<>_    \n" +
+                "               \\_/ | \\\\        //|\\   ______/ \\)                            \n" +
+                "                 \\_|  \\\\      // | \\_/                                      \n" +
+                "                  \\|\\/|\\_    //  /\\/                                        \n" +
+                "                        (oo)\\ \\_///       [" + RED + dragons[1].getHitPoints() + " HP" + RESET + "] \n" +
+                "                        //_/\\_\\/ /|                                      \n" +
+                "                      @@/  |=\\  \\ |                                       \n" +
+                "                             \\_=\\_\\|                                     \n" +
+                "        __        _           \\==\\ |\\_                   \\||/               \n" +
+                "      _/  \\    _(\\(o __       (\\===\\(  )\\                |  @___oo          \n" +
+                "      /     \\  /  _  ^^^o    (((~) __(_/       /\\  /\\   / (__,,,,|         \n" +
+                "     /   !   \\/  ! '!!!v'   (((~) \\  /        ) /^\\) ^\\/ _)                \n" +
+                "    !  !  \\ _' ( \\____      ______/ /         )   _ /  / _)                \n" +
+                "    ! . \\ _!\\   \\===^\\)      '------'    /\\  ) /\\/ ||  | )_)                \n" +
+                "     \\ \\_!  / __!                       <  >      |(,,) )__)               \n" +
+                "      \\!   /    \\                        ||      /    \\)___)\\              \n" +
+                "(\\_      _/    _\\ )                      | \\____(      )___) )___          \n" +
+                " \\ ^^--^^ __-^ /(__                      \\______(_______;;; __;;;          \n" +
+                "  ^^----^^    \"^--v'                                                       \n" +
+                "                                                                           \n" +
+                "     [" + RED + dragons[0].getHitPoints() + " HP" + RESET + "]                                         [" + RED + dragons[2].getHitPoints() + " HP" + RESET + "]        \n";
+    }
+    private static String getArt23(Dragon[] dragons, String RED, String RESET) {
+        return  "         <>=======()                                                       \n" +
+                "        (/\\___   /|\\\\           ()==========<>_    \n" +
+                "               \\_/ | \\\\        //|\\   ______/ \\)                            \n" +
+                "                 \\_|  \\\\      // | \\_/                                      \n" +
+                "                  \\|\\/|\\_    //  /\\/                                        \n" +
+                "                        (oo)\\ \\_///        \n" +
+                "                        //_/\\_\\/ /|                                      \n" +
+                "                      @@/  |=\\  \\ |                                       \n" +
+                "                             \\_=\\_\\|                                     \n" +
+                "                              \\==\\ |\\_                      \\||/               \n" +
+                "                            (\\====\\( )\\                     |  @___oo          \n" +
+                "                           (((~) __(_/                /\\  /\\/ (__,,,,|         \n" +
+                "                           (((~) \\  /              ) /^\\) ^\\/ _)                \n" +
+                "                           ______/ /               )   _ /  / _)                \n" +
+                "                           '------'            /\\  ) /\\/ || | )_)                \n" +
+                "                [" + RED + dragons[1].getHitPoints() + " HP" + RESET + "]                      <  >      |(,,) )__)               \n" +
+                "                                               ||      /    \\)___)\\              \n" +
+                "                                               | \\____(      )___) )___          \n" +
+                "                                               \\______(_______;;; __;;;          \n" +
+                "                                                                             \n" +
+                "                                                         [" + RED + dragons[2].getHitPoints() + " HP" + RESET + "]                  \n" +
+                "                                                                              \n";
+    }
+    private static String getArt13(Dragon[] dragons, String RED, String RESET) {
+        return "                                                                             \n" +
+                "                                                                          \n" +
+                "                                                                           \n" +
+                "                                                                            \n" +
+                "                                                                            \n" +
+                "                                                                             \n" +
+                "                                                                              \n" +
+                "                                                                             \n" +
+                "                                                                                \n" +
+                "        __        _                                     \\||/               \n" +
+                "      _/  \\    _(\\(o __                                 |  @___oo          \n" +
+                "      /     \\  /  _  ^^^o                     /\\  /\\   / (__,,,,|         \n" +
+                "     /   !   \\/  ! '!!!v'                    )/^\\) ^\\ / _)                \n" +
+                "    !  !  \\ _' ( \\____                       )   _ /  / _)                \n" +
+                "    ! . \\ _!\\   \\===^\\)                  /\\  ) /\\/ || | )_)                \n" +
+                "     \\ \\_!  / __!                       <  >      |(,,) )__)               \n" +
+                "      \\!   /    \\                        ||      /    \\)___)\\              \n" +
+                "(\\_      _/    _\\ )                      | \\____(      )___) )___          \n" +
+                " \\ ^^--^^ __-^ /(__                      \\______(_______;;; __;;;          \n" +
+                "  ^^----^^    \"^--v'                                                       \n" +
+                "                                                                           \n" +
+                "     [" + RED + dragons[0].getHitPoints() + " HP" + RESET + "]                                         [" + dragons[2].getHitPoints() + " HP" + RESET + "]        \n";
+    }
+    private static String getArt12(Dragon[] dragons, String RED, String RESET) {
+        return "                   <>=======()                                                                   \n" +
+                "                  (/\\___   /|\\\\           ()==========<>_                           \n" +
+                "                         \\_/ | \\\\        //|\\   ______/ \\)                            \n" +
+                "                           \\_|  \\\\      // | \\_/                                      \n" +
+                "                            \\|\\/|\\_    //  /\\/                                        \n" +
+                "                                  (oo)\\ \\_///       [" + RED + dragons[1].getHitPoints() + " HP" + RESET + "] \n" +
+                "                                  //_/\\_\\/ /|                                      \n" +
+                "                                @@/  |=\\  \\ |                                       \n" +
+                "                                      \\_=\\_\\|                                     \n" +
+                "        __        _                    \\==\\ |\\_                                  \n" +
+                "      _/  \\    _(\\(o __             _(\\==\\(  )\\                             \n" +
+                "      /     \\  /  _  ^^^o           (((~) __(_/                                    \n" +
+                "     /   !   \\/  ! '!!!v'           (((~) \\  /                                   \n" +
+                "    !  !  \\ _' ( \\____              ______/ /                                         \n" +
+                "    ! . \\ _!\\   \\===^\\)             '------'                                 \n" +
+                "     \\ \\_!  / __!                                                     \n" +
+                "      \\!   /    \\                                                      \n" +
+                "(\\_      _/    _\\ )                                                        \n" +
+                " \\ ^^--^^ __-^ /(__                                                   \n" +
+                "  ^^----^^    \"^--v'                                                       \n" +
+                "                                                                           \n" +
+                "     [" + RED + dragons[0].getHitPoints() + " HP" + RESET + "]                                                  \n";
+    }
+    private static String getArt1(Dragon[] dragons, String RED, String RESET) {
+        return          "                                                                     \n" +
+                        "                                                                         \n" +
+                        "        __        _                                                   \n" +
+                        "      _/  \\    _(\\(o __                                           \n" +
+                        "      /     \\  /  _  ^^^o                                               \n" +
+                        "     /   !   \\/  ! '!!!v'                                                \n" +
+                        "    !  !  \\ _' ( \\____                                                         \n" +
+                        "    ! . \\ _!\\   \\===^\\)                                              \n" +
+                        "     \\ \\_!  / __!                                                     \n" +
+                        "      \\!   /    \\                                                      \n" +
+                        "(\\_      _/    _\\ )                                                        \n" +
+                        " \\ ^^--^^ __-^ /(__                                                   \n" +
+                        "  ^^----^^    \"^--v'                                                       \n" +
+                        "                                                                           \n" +
+                        "     [" + RED + dragons[0].getHitPoints() + " HP" + RESET + "]                                                  \n";
+    }
+    private static String getArt2(Dragon[] dragons, String RED, String RESET) {
+        return  "         <>=======()                                                       \n" +
+                "        (/\\___   /|\\\\           ()==========<>_    \n" +
+                "               \\_/ | \\\\        //|\\   ______/ \\)                            \n" +
+                "                 \\_|  \\\\      // | \\_/                                      \n" +
+                "                  \\|\\/|\\_    //  /\\/                                        \n" +
+                "                        (oo)\\ \\_///       [" + RED + dragons[1].getHitPoints() + " HP" + RESET + "] \n" +
+                "                        //_/\\_\\/ /|                                      \n" +
+                "                      @@/  |=\\  \\ |                                       \n" +
+                "                             \\_=\\_\\|                                     \n" +
+                "                             \\==\\ |\\_                                \n" +
+                "                          (\\===\\(  )\\                         \n" +
+                "                          (((~) __(_/                \n" +
+                "                          (((~) \\  /                        \n" +
+                "                          ______/ /                        \n" +
+                "                          '------'                   \n" +
+                "                                                           \n" +
+                "                                                           \n" +
+                "                                                    \n" +
+                "                                                   \n" +
+                "                                                                             \n" +
+                "                                                                           \n" +
+                "                                                                              \n";
+    }
+    private static String getArt3(Dragon[] dragons, String RED, String RESET) {
+        return  "                                                            \\||/           \n" +
+                "                                                            |  @___oo      \n" +
+                "                                                  /\\  /\\   / (__,,,,|      \n" +
+                "                                                 ) /^\\) ^\\/ _)             \n" +
+                "                                                 )   /^\\/   _)             \n" +
+                "                                                 )   _ /  / _)             \n" +
+                "                                             /\\  )/\\/ ||  | )_)            \n" +
+                "                                            <  >      |(,,) )__)           \n" +
+                "                                             ||      /    \\)___)\\          \n" +
+                "                                             | \\____(      )___) )___      \n" +
+                "                                              \\______(_______;;; __;;;     \n" +
+                "                                              [" + RED + dragons[2].getHitPoints() + " HP" + RESET + "] \n";
+    }
+    private static void printDragonStatus(String YELLOW, String CYAN, String RED, String GREEN, String RESET, Dragon[] dragons) {
+
+        System.out.println("Dragons Status");
+        System.out.println("---------------");
+        for (int ds = 0; ds < dragons.length; ds++) {
+            if (dragons[ds].getHitPoints() > 0) {
+                System.out.println("Dragon " + (ds + 1) + " has  " + YELLOW + dragons[ds].getHitPoints() + " HP " + "and deals up to " + dragons[ds].getDamage() + " damage!" + RESET);
+            }
+        }
+    }
 }
