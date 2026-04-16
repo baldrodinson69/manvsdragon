@@ -1,25 +1,50 @@
+import java.util.Random;
+
+import static java.lang.Thread.sleep;
+
 public class Dragon {
-    private int hitPoints;
-    private int damage;
+    private String name; //of dragon
+    private int hp;
+    private int maxDmg;
+    private String type; //what kind of dragon
+    private Random rand = new Random();
 
-    public Dragon(int hitPoints, int damage) {
-        this.hitPoints = hitPoints;
-        this.damage = damage;
+    public Dragon(String name, int hp, int maxDmg, String type) {
+        this.name = name;
+        this.hp = hp;
+        this.maxDmg = maxDmg;
+        this.type = type;
     }
 
-    public int getDamage() {
-        return damage;
-    }
+    //crit logic
+    public int attack(Hero hero) {
+        int baseDmg = rand.nextInt(maxDmg) + 1;
+        boolean isCrit = rand.nextInt(100) < 15; // 15% Crit Chance
 
-    public void setDamage(int damage) {
-        this.damage = damage;
+        if (isCrit) {
+            baseDmg = (int)(baseDmg * 1.5);
+            System.out.print(Art.RED + "CRIT! " + Art.RESET);
+
+            try {
+                sleep(1800);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+
+        }
+        return baseDmg;
     }
 
     public int getHitPoints() {
-        return hitPoints;
-    }
+        return hp; }
+    public void setHitPoints(int hp) {
+        this.hp = hp; }
+    public String getName() {
+        return name; }
 
-    public void setHitPoints(int hitPoints) {
-        this.hitPoints = hitPoints;
+    public void takeDmg(int amount) {
+        this.hp -= amount;
+        if (this.hp <0) this.hp = 0;
     }
 }
