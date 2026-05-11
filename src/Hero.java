@@ -4,12 +4,24 @@ public class Hero {
 
     //initialize hp and crit effects
     private int hp;
+    private int maxHP;
     private int baseMaxDmg;
     private Random rand = new Random();
 
     public Hero(int hp, int baseMaxDmg) {
         this.hp = hp;
+        this.maxHP = hp;
         this.baseMaxDmg = baseMaxDmg;
+    }
+
+    public void heal() {
+        int healAmount = (int)(maxHP * 0.15);
+        this.hp += healAmount;
+
+        if (this.hp > maxHP) {
+            this.hp = maxHP;
+        }
+        System.out.println(Art.CYAN + "You focused your energy and healed for " + healAmount + " HP!" + Art.RESET);
     }
 
     public void takeDmg(int amount) {

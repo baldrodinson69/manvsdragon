@@ -22,9 +22,12 @@ public class Dragon {
         boolean isCrit = rand.nextInt(100) < 15; // 15% Crit Chance
 
         if (isCrit) {
+            //crit dmg
             baseDmg = (int)(baseDmg * 1.5);
             System.out.print(Art.RED + "CRIT! " + Art.RESET);
-
+            //crit heal
+            System.out.print(Art.RED + "CRIT! " + Art.RESET);
+            System.out.println(Art.YELLOW + name + " siphons your soul and heals 20 HP!" + Art.RESET);
             try {
                 sleep(1800);
             } catch (InterruptedException e) {
